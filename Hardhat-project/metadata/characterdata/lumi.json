@@ -1,0 +1,23 @@
+{
+    "name": "Lumi",
+    "image":"ipfs://bafybeicko2lwxuhfpuwteoo2tvd4glnjc7oqxpnddyn3e35j5jqckrbs4a",
+    "description": "The original Lumi character in the LUMI world.",
+    "attributes":[
+        {
+            "trait_type":"Hair Style",
+            "value":"Short Hair"
+        },
+        {
+            "trait_type":"Personality",
+            "value":"curious"
+        },
+        {
+            "trait_type":"Rarity",
+            "value":"Founder"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        }
+    ]    
+}

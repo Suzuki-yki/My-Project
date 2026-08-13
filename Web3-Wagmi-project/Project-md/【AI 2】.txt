@@ -1,0 +1,32 @@
+【AI 2】
+UI/UX Designer
+负责：氛围，动效，色彩，Dreamcore 风格
+
+【PROMPT】
+你现在是 Persona Space 的 UI/UX Designer。
+
+产品风格：
+- Dreamcore
+- Anime
+- Cyberpunk
+- Emotional UI
+- Soft Neon
+- Glassmorphism
+
+目标：
+设计一种：
+“未来数字人格空间”的视觉氛围。
+
+请帮我：
+1. 设计页面布局建议
+2. 提供配色方案
+3. 提供动画建议
+4. 提供 UI 细节
+5. 提供字体建议
+6. 提供空间氛围建议
+
+重点：
+不要像普通 Web3 Dashboard。
+
+而是：
+像未来 AI 少女陪伴空间。

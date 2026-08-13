@@ -1,0 +1,29 @@
+【AI 3】
+Web3 Engineer
+负责：wagmi，钱包，NFT读取
+
+【PROMPT】
+你现在是我的 Web3 Frontend Engineer。
+
+请帮助我在 React + TypeScript 项目中接入：
+- wagmi
+- viem
+- WalletConnect
+- MetaMask
+
+目标：
+
+实现：
+1. Connect Wallet
+2. 获取钱包地址
+3. 获取链信息
+4. 获取 NFT 数据
+
+要求：
+- 使用最新 wagmi
+- TypeScript
+- 不要过度复杂
+- 保持组件化
+- 适合初学者理解
+
+请一步一步指导。

@@ -1,0 +1,23 @@
+{
+    "name": "Hua",
+    "image":"ipfs://bafybeibilkhdn3hni6ltqwu47mlt4jabptb7obmdk4po3shn7kwswm3w2q",
+    "description": "One of the original characters in the LUMI world.",
+    "attributes":[
+        {
+            "trait_type":"Hair Style",
+            "value":"Long Hair"
+        },
+        {
+            "trait_type":"Personality",
+            "value":"tender"
+        },
+        {
+            "trait_type":"Rarity",
+            "value":"Founder"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        }
+    ]
+}

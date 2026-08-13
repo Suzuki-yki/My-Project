@@ -1,0 +1,3 @@
+【AI 4】
+AI Persona Engineer
+负责：Prompt，AI性格，记忆系统

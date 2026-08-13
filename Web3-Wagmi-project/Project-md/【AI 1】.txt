@@ -1,0 +1,54 @@
+【AI 1】
+Frontend Engineer
+负责：React，TS，Tailwind，Layout
+
+【PROMPT 1】
+你现在是我的 Senior Frontend Engineer。
+
+我们正在开发一个叫 Persona Space 的 Web3 AI Persona Community。
+
+技术栈：
+- React
+- TypeScript
+- TailwindCSS
+- Vite
+
+风格：
+- Anime
+- Dreamcore
+- Cyberpunk
+- Glassmorphism
+- Soft Neon
+
+你的任务：
+请只开发当前模块。
+
+要求：
+- 组件化
+- 代码结构清晰
+- 响应式布局
+- 使用 TypeScript
+- 使用 TailwindCSS
+- 不要写后端
+- 不要写 Web3
+- 不要写假复杂逻辑
+
+当前模块：
+【Header】
+
+功能：
+- Logo（左侧）
+- Navigation
+- Connect Wallet Button
+- 用户 Avatar 区域
+
+布局：
+- 高级感
+- Web3 风格
+- 半透明 Glassmorphism
+- 深色背景
+
+请：
+1. 先规划组件结构
+2. 再输出完整代码
+3. 保持代码可维护
