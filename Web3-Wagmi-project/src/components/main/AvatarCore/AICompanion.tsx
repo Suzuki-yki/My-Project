@@ -1,8 +1,10 @@
-import React, {
+import {
   useState,
   useRef,
   useEffect,
+  type KeyboardEvent,
 } from 'react'
+import OpenAI from 'openai'
 import { useAccount } from 'wagmi'
 import { deepseek } from '../../../lib/deepseek'
 import { supabase } from '../../../lib/supabase'
@@ -22,7 +24,7 @@ type Sparkle = {
   y: number
 }
 
-function AICompanion(): JSX.Element {
+function AICompanion() {
   const [input, setInput] = useState('')
 
   const { address, isConnected } = useAccount()
@@ -46,7 +48,7 @@ function AICompanion(): JSX.Element {
   useState<any[]>([])
 
   const timeoutRefs = useRef<
-    Record<number, NodeJS.Timeout>
+    Record<number, ReturnType<typeof setTimeout>>
   >({})
 //loding memory
    useEffect(() => {
@@ -203,20 +205,20 @@ function AICompanion(): JSX.Element {
 //send message
   const handleSend = async () => {
   if (!input.trim()) return
-
+ 
   if (!isConnected || !address) {
       createFloatingMessage(
         '先连接钱包啦。'
       )
       return
     }
-
+ 
   const userInput = input
-
+ 
   setInput('')
-
+ 
   createFloatingMessage(userInput)
-
+ 
   try {
     setEmotion('thinking')
     await supabase.from('messages').insert({
@@ -224,8 +226,8 @@ function AICompanion(): JSX.Element {
         sender: 'user',
         content: userInput,
       })
-
-      const memoryContext =
+ 
+      const memoryContext: OpenAI.Chat.ChatCompletionMessageParam[] =
         memoryMessages
           .slice(-20)
           .map((msg) => ({
@@ -233,19 +235,14 @@ function AICompanion(): JSX.Element {
               msg.sender === 'user'
                 ? 'user'
                 : 'assistant',
-
-            content: msg.content,
+ 
+            content: String(msg.content),
           }))
-
-    const response =
-      await deepseek.chat.completions.create({
-        model: 'deepseek-chat',
-
-        messages: [
-          {
-            role: 'system',
-
-            content: `
+ 
+    const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [
+      {
+        role: 'system',
+        content: `
 You are LUMI.
 
 You are not an assistant.
@@ -361,14 +358,18 @@ Available relationship states:
 - aggressive
 - distant
 `,
-          },
-          ...memoryContext,
-          {
-            role: 'user',
-            content: userInput,
-          },
-        ],
-      })
+      },
+      ...memoryContext,
+      {
+        role: 'user',
+        content: userInput,
+      },
+    ]
+
+    const response = await deepseek.chat.completions.create({
+      model: 'deepseek-chat',
+      messages,
+    })
 
     const rawReply =
       response.choices[0].message.content ||
@@ -436,7 +437,7 @@ Available relationship states:
 
   // Enter发送
   const handleKeyDown = (
-    e: React.KeyboardEvent<HTMLInputElement>
+    e: KeyboardEvent<HTMLInputElement>
   ) => {
     if (e.key === 'Enter') {
       e.preventDefault()

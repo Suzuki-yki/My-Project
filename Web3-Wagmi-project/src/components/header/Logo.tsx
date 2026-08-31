@@ -1,8 +1,6 @@
-import React from 'react'
-
 type Props = { onClick?: () => void }
 
-function Logo({ onClick }: Props): JSX.Element {
+function Logo({ onClick }: Props) {
   return (
     <div onClick={onClick} className="flex items-center gap-3 cursor-pointer hover:scale-105 transition-transform">
       <img src="/logo.png" alt="LUMI logo" className="h-12 w-12 rounded-full border border-zinc-700" />

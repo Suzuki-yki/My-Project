@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Logo from './Logo'
 import Navigation from './Navigation'
 import WalletButton from './WalletButton'
@@ -11,7 +11,7 @@ type HeaderProps = {
   onPageChange?: (page: string) => void
 }
 
-function Header({ onPageChange }: HeaderProps): JSX.Element {
+function Header({ onPageChange }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   const handleNavigate = (page: string) => {

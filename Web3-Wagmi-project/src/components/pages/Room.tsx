@@ -1,7 +1,6 @@
-import React from 'react'
 import { usePermissions  } from '../../hooks/usePermissions'
 
-function Room(): JSX.Element {
+function Room() {
   const { canAccessRoom } = usePermissions();
   if(!canAccessRoom) {
     return (

@@ -1,30 +1,39 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.20;
 
-contract LumiMarketplace{
-
-    struct listing {
-        address nftcontract;
+contract LumiMarketplace {
+    struct Listing {
+        address nftContract;
         uint256 tokenId;
         uint256 price;
         address seller;
     }
 
-    mapping(address => mapping(uint256 => listing)) public Listings;
-    //1.Create listings
-    
-    function listItem(address seller, uint256 price) external {
-        require(seller == msg.sender, "Your are not Owner");
-        listings[1] = Listing(msg.sender, price);
+    mapping(address => mapping(uint256 => Listing)) public listings;
+
+    function listItem(address nftContract, uint256 tokenId, uint256 price) external {
+        require(price > 0, "Price must be greater than zero");
+
+        listings[nftContract][tokenId] = Listing({
+            nftContract: nftContract,
+            tokenId: tokenId,
+            price: price,
+            seller: msg.sender
+        });
     }
 
-    //2.Cancel listings
-    function cancelListings(uint256 tokenId) external {
+    function cancelListing(address nftContract, uint256 tokenId) external {
+        Listing storage listingItem = listings[nftContract][tokenId];
+        require(listingItem.seller == msg.sender, "Not the seller");
 
+        delete listings[nftContract][tokenId];
     }
 
-    //Buy NFT and delect listings
-    function buyItem( uint256 tokenId ) external {
+    function buyItem(address nftContract, uint256 tokenId) external payable {
+        Listing storage listingItem = listings[nftContract][tokenId];
+        require(listingItem.seller != address(0), "Listing not found");
+        require(msg.value >= listingItem.price, "Insufficient payment");
 
+        delete listings[nftContract][tokenId];
     }
 }

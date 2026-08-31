@@ -9,7 +9,7 @@ import Main from "./components/main/Main.tsx"
 
 const queryClient = new QueryClient()
 
-function AppContent(): JSX.Element {
+function AppContent() {
   const [currentPage, setCurrentPage] = useState('Room')
 
   return (
@@ -22,7 +22,7 @@ function AppContent(): JSX.Element {
   )
 }
 
-function App(): JSX.Element {
+function App() {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>

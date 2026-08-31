@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useAccount, useConnect, useDisconnect } from 'wagmi'
 
-function WalletButton(): JSX.Element {
+function WalletButton() {
   const { address, isConnected } = useAccount()
   const { connect, connectors } = useConnect()
   const { disconnect } = useDisconnect()
