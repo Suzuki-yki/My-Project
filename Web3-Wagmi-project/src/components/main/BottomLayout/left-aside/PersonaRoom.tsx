@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Room from '../../../pages/Room'
 import Collection from '../../../pages/Collection'
 import Memories from '../../../pages/Memories'
@@ -12,7 +10,7 @@ type PersonaRoomProps = {
 
 function PersonaRoom({
   currentPage = 'Room',
-}: PersonaRoomProps): JSX.Element {
+}: PersonaRoomProps) {
   const renderPage = () => {
     switch (currentPage) {
       case 'Room':

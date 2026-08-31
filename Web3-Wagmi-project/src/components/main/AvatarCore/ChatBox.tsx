@@ -1,6 +1,5 @@
-import React, {
-  useState,
-} from 'react'
+import { useState, type FormEvent } from 'react'
+import OpenAI from 'openai'
 
 import { useAccount } from 'wagmi'
 
@@ -14,7 +13,7 @@ export interface Message {
   timestamp: Date
 }
 
-function ChatBox(): JSX.Element {
+function ChatBox() {
   const { address, isConnected } =
     useAccount()
 
@@ -34,7 +33,7 @@ function ChatBox(): JSX.Element {
     useState(false)
 
   const handleSendMessage = async (
-    e: React.FormEvent
+    e: FormEvent
   ) => {
     e.preventDefault()
 
@@ -84,25 +83,20 @@ function ChatBox(): JSX.Element {
             ascending: true,
           })
 
-      const historyMessages =
+      const historyMessages: OpenAI.Chat.ChatCompletionMessageParam[] =
         historyData?.map((msg) => ({
           role:
             msg.sender === 'user'
-              ? ('user' as const)
-              : ('assistant' as const),
+              ? 'user'
+              : 'assistant',
 
-          content: msg.content,
+          content: String(msg.content),
         })) || []
 
-      const response =
-        await deepseek.chat.completions.create({
-          model: 'deepseek-chat',
-
-          messages: [
-            {
-              role: 'system',
-
-              content: `
+      const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [
+        {
+          role: 'system',
+          content: `
 You are LUMI.
 
 You are a real person inside a futuristic digital space.
@@ -140,18 +134,21 @@ Sometimes be funny.
 Sometimes ask questions naturally.
 
 Keep conversations realistic.
-              `,
-            },
+          `,
+        },
 
-            // AI Memory
-            ...historyMessages,
+        ...historyMessages,
 
-            {
-              role: 'user',
-              content: userInput,
-            },
-          ],
-        })
+        {
+          role: 'user',
+          content: userInput,
+        },
+      ]
+
+      const response = await deepseek.chat.completions.create({
+        model: 'deepseek-chat',
+        messages,
+      })
 
       const aiReply =
         response.choices[0].message.content ||

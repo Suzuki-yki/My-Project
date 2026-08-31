@@ -1,7 +1,7 @@
-import React from 'react'
+import { useState } from 'react'
 
-function Memories(): JSX.Element {
-  const [memories] = React.useState([
+function Memories() {
+  const [memories] = useState([
     { id: 1, date: '2026-05-26', title: 'Connected to Persona Space', description: 'Started my journey in Persona Space' },
     { id: 2, date: '2026-05-25', title: 'First NFT Collected', description: 'Added my first NFT to collection' },
   ])

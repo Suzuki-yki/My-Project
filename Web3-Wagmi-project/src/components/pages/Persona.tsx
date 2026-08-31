@@ -1,7 +1,6 @@
-import React from 'react'
 import { useUserInfo } from '../../hooks/useUserInfo'
 
-function Persona(): JSX.Element {
+function Persona() {
   const { personaData, isConnected } = useUserInfo()
 
   if (!isConnected) {

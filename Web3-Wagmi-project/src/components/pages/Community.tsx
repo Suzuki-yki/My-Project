@@ -1,7 +1,7 @@
-import React from 'react'
+import { useState } from 'react'
 
-function Community(): JSX.Element {
-  const [communityMembers] = React.useState([
+function Community() {
+  const [communityMembers] = useState([
     { id: 1, name: 'Explorer_Soul', level: 15, vibe: 'Dreamcore Collector' },
     { id: 2, name: 'Cyber_Wanderer', level: 12, vibe: 'Anime Enthusiast' },
     { id: 3, name: 'Pink_Aesthetic', level: 8, vibe: 'Aesthetic Lover' },

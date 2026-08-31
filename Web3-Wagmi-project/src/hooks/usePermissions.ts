@@ -10,13 +10,14 @@ export function usePermissions() {
 
      console.log("CURRENT CHAIN:", chainId);
     const { data: balance } = useReadContract({
-        address: LUMI_POSSESSIONS_ADDRESS,     
-        abi: LUMI_POSSESSIONS_ABI,  
+        address: LUMI_POSSESSIONS_ADDRESS,
+        abi: LUMI_POSSESSIONS_ABI,
         functionName: "balanceOf",
-        args: [walletAddress],
+        args: walletAddress ? [walletAddress] : undefined,
     })
 
-    const hasCharacter = balance ? balance > 0n : false;
+    const balanceValue = typeof balance === 'bigint' ? balance : 0n;
+    const hasCharacter = balanceValue > 0n;
     const canAccessPersona = hasCharacter;
     const canAccessRoom = hasCharacter;
     const canAccessCollections = hasCharacter;

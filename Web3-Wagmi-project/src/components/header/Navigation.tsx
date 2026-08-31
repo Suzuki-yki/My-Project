@@ -1,5 +1,3 @@
-import React from 'react'
-
 type Props = {
   vertical?: boolean
   onNavigate?: (page: string) => void
@@ -8,7 +6,7 @@ type Props = {
 
 const LINKS = ['Room', 'Collection', 'Persona', 'Memories', 'Community']
 
-function Navigation({ vertical = false, onNavigate, onMobileNavigate }: Props): JSX.Element {
+function Navigation({ vertical = false, onNavigate, onMobileNavigate }: Props) {
   const handleClick = (label: string) => {
     onNavigate?.(label)
     onMobileNavigate?.()

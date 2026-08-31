@@ -1,5 +1,6 @@
 import { useAccount, useBalance, useChainId } from 'wagmi'
 import { useQuery } from '@tanstack/react-query'
+import { formatUnits } from 'viem'
 
 export interface ChainInfo {
   chainId: number
@@ -46,7 +47,7 @@ export function useUserInfo() {
   return {
     address,
     isConnected,
-    balance: balanceData?.formatted || '0',
+    balance: balanceData ? formatUnits(balanceData.value, balanceData.decimals) : '0',
     balanceSymbol: balanceData?.symbol || 'ETH',
     chainInfo: getChainInfo(chainId),
     personaData,

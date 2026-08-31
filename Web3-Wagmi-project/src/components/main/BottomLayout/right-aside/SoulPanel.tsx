@@ -1,8 +1,7 @@
-import React from 'react'
 import { useUserInfo } from '../../../../hooks/useUserInfo'
 import { useNFTs } from '../../../../hooks/useNFTs'
 
-function SoulPanel(): JSX.Element {
+function SoulPanel() {
   const { address, isConnected, balance, balanceSymbol, chainInfo, personaData } = useUserInfo()
   const { nfts } = useNFTs()
 

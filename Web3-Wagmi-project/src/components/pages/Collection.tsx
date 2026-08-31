@@ -1,10 +1,9 @@
-import React from 'react'
 import { useNFTs } from '../../hooks/useNFTs'
 import { useUserInfo } from '../../hooks/useUserInfo'
 
-function Collection(): JSX.Element {
+function Collection() {
   const { nfts, isLoading } = useNFTs()
-  const { address, isConnected } = useUserInfo()
+  const { isConnected } = useUserInfo()
 
   if (!isConnected) {
     return (
