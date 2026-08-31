@@ -1,6 +1,6 @@
-import Lumipossessions from "../../Hardhat-project/artifacts/contracts/LumiPossessions.sol//LumiPossessions.json";
-import deplomentAddress from "../../Hardhat-project/deployments/sepolia.json";
+import lumiPossessionsAbi from "../src/contracts/abi/LumiPossessions.json";
 
-export const LUMI_POSSESSIONS_ADDRESS = deplomentAddress.LumiPossessions as `0x${string}`;
+export const LUMI_POSSESSIONS_ADDRESS =
+  "0x4e9ef94d34fCB146BE8252540e383a73F60c29Aa" as `0x${string}`;
 
-export const LUMI_POSSESSIONS_ABI = Lumipossessions.abi;
+export const LUMI_POSSESSIONS_ABI = lumiPossessionsAbi;
